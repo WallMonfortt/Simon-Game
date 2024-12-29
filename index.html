@@ -10,13 +10,21 @@
 
 <body>
   <h1 id="level-title">Press A Key to Start</h1>
+  <div class="score">
+    <h2>Score: </h2>
+    <h2 id="num"></h2>
+    <div class="btns">
+      <button id="plus">+1</button>
+      <button onclick="reset()" id="reset">reset</button>
+    </div>
+  </div>
   <div class="container">
     <div id="outer-circle">
       <div id="topleft" class="btn"></div>
       <div id="topright" class="btn"></div>
       <div id="bottomleft" class="btn"></div>
       <div id="bottomright" class="btn"></div>
-      <div id="inner-circle" class="btn">
+      <div id="inner-circle" >
           <div id="top-left-inner" class="hidden btn"></div>
           <div id="top-right-inner" class="hidden btn"></div>
           <div id="bottom-left-inner" class="hidden btn"></div>
