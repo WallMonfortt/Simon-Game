@@ -1,45 +1,39 @@
-var score = 0,
-    display = $('#num');
-    body = $('body')
+let score = 0,
+    display = $('#num'),
+    body = $('body'),
+    buttonColours = ["green", "red", "yellow", "blue", "sea-blue", "black", "brown", "gray" ],
+    gamePattern = [],
+    userClickedPattern = [],
+    currentLevel = 0,
+    buttons = $('.btn');
 
-let buttonColours = ["green", "red", "yellow", "blue", "sea-blue", "black", "brown", "gray" ]
+  buttons.on('click', function(){
+    const btn = this.id
+    flashBtn(btn)
+    makeSound(btn)
+    userClickedPattern.push(btn)
+    let index = userClickedPattern.length - 1;
+    checkAnswers(index)
+  })
+  buttons.addClass("dis");
 
-let gamePattern = [];
-let userClickedPattern = [];
-
-let currentLevel = 0;
-
-
-
-let speed = 0.5
 
 $(document).keydown(function (e) {
-  console.log(e.key)
-  if(e.key === 'a'){
-    gamePattern = [];
-    userClickedPattern = [];
-    currentLevel = 0;
-    startGame()
-  }else{
     startOver();
-  }
 })
-
 
 display.text(score);
 
-let buttons = $('.btn')
-buttons.on('click', function(){
-  const btn = this.id
-  flashBtn(btn)
-  makeSound(btn)
-  userClickedPattern.push(btn)
-  let index = userClickedPattern.lastIndexOf(btn)
-  checkAnswers(index)
-})
-
-buttons.addClass("dis");
-
+function startOver() {
+  body.removeClass('game-over')
+  buttons.removeClass("dis");
+  score = 0;
+  gamePattern = [];
+  userClickedPattern = [];
+  currentLevel = 0;
+  nextElement();
+  display.text(score);
+}
 
 function nextElement() {
   currentLevel ++;
@@ -68,43 +62,23 @@ function makeSound(file) {
 audio.play();
 }
 
-function startGame() {
-  nextElement();
-  buttons.removeClass("dis");
-}
 
-function startOver() {
-  score = 0;
-  display.text(score);
-  gamePattern = [];
-  userClickedPattern = [];
-  currentLevel = 0;
-  body.removeClass('game-over')
-  startGame();
-}
 
 function checkAnswers(currentbtn) {
-
   if (gamePattern[currentbtn] === userClickedPattern[currentbtn]) {
-
-    console.log("success");
     score += 100
     display.text(score);
-
     if (userClickedPattern.length === gamePattern.length){
 
       setTimeout(function () {
         nextElement();
-      }, 1500);
-
+      }, 800);
     }
-
   } else {
-
+    buttons.addClass("dis");
     body.addClass('game-over')
     $("h1").text(`Game Over!!! Press any key to restar`)
     makeSound('wrong')
-    buttons.addClass("dis");
   }
 }
 
