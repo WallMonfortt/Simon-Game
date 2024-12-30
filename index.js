@@ -1,5 +1,6 @@
 var score = 0,
-    display = document.getElementById('num');
+    display = $('#num');
+    body = $('body')
 
 let buttonColours = ["green", "red", "yellow", "blue", "sea-blue", "black", "brown", "gray" ]
 
@@ -15,20 +16,17 @@ let speed = 0.5
 $(document).keydown(function (e) {
   console.log(e.key)
   if(e.key === 'a'){
+    gamePattern = [];
+    userClickedPattern = [];
+    currentLevel = 0;
     startGame()
+  }else{
+    startOver();
   }
 })
 
-// var plus = document.getElementById('plus')
 
-display.innerText = score;
-
-// plus.addEventListener('click', function(){
-//   score++;
-//   display.innerText = score;
-//   console.log(`random ${nexSequence()}`)
-//   enabled();
-// });
+display.text(score);
 
 let buttons = $('.btn')
 buttons.on('click', function(){
@@ -36,24 +34,28 @@ buttons.on('click', function(){
   flashBtn(btn)
   makeSound(btn)
   userClickedPattern.push(btn)
-  console.log(userClickedPattern)
+  let index = userClickedPattern.lastIndexOf(btn)
+  checkAnswers(index)
 })
 
-
-function reset() {
-    score =0;
-    display.innerText = score;
-};
-
-// Game functions
+buttons.addClass("dis");
 
 
 function nextElement() {
+  currentLevel ++;
+  userClickedPattern = [];
   let max = 4;
   if (currentLevel > 5) {
     max = 8;
+    buttons.removeClass("hidden");
   }
-  return Math.floor(Math.random() * max )
+  const randomChosenColour=  Math.floor(Math.random() * max );
+  const nextColor = buttonColours[randomChosenColour]
+  gamePattern.push(nextColor)
+  $("h1").text(`Level ${currentLevel}`)
+
+  makeSound(nextColor)
+  flashBtn(nextColor)
 }
 
 
@@ -67,13 +69,42 @@ audio.play();
 }
 
 function startGame() {
-  const randomChosenColour = nextElement()
-  const nextColor = buttonColours[randomChosenColour]
-  gamePattern.push(nextColor)
-
-  makeSound(nextColor)
-  flashBtn(nextColor)
-
-  console.log(`game Pattern ${gamePattern}`)
+  nextElement();
+  buttons.removeClass("dis");
 }
-// makeSound(buttonColours[randomChosenColour])
+
+function startOver() {
+  score = 0;
+  display.text(score);
+  gamePattern = [];
+  userClickedPattern = [];
+  currentLevel = 0;
+  body.removeClass('game-over')
+  startGame();
+}
+
+function checkAnswers(currentbtn) {
+
+  if (gamePattern[currentbtn] === userClickedPattern[currentbtn]) {
+
+    console.log("success");
+    score += 100
+    display.text(score);
+
+    if (userClickedPattern.length === gamePattern.length){
+
+      setTimeout(function () {
+        nextElement();
+      }, 1500);
+
+    }
+
+  } else {
+
+    body.addClass('game-over')
+    $("h1").text(`Game Over!!! Press any key to restar`)
+    makeSound('wrong')
+    buttons.addClass("dis");
+  }
+}
+

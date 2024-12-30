@@ -42,6 +42,7 @@ body {
   background-color: grey;
 }
 
+.dis{pointer-events:none}
 
 
 #outer-circle {
