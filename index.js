@@ -6,6 +6,7 @@ let score = 0,
     userClickedPattern = [],
     currentLevel = 0,
     buttons = $('.btn');
+    startBtn = $('button')
 
   buttons.on('click', function(){
     const btn = this.id
@@ -24,7 +25,18 @@ $(document).keydown(function (e) {
 
 display.text(score);
 
+function isMobile() {
+  const regex = /Mobi|Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i;
+  console.log(navigator.userAgent)
+  return regex.test(navigator.userAgent);
+}
+
+if (isMobile()) {
+  startBtn.removeClass('hidden')
+}
+
 function startOver() {
+  startBtn.text('Restart')
   body.removeClass('game-over')
   buttons.removeClass("dis");
   score = 0;
