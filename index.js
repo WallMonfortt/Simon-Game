@@ -6,7 +6,8 @@ let score = 0,
     userClickedPattern = [],
     currentLevel = 0,
     buttons = $('.btn');
-    startBtn = $('button')
+    startBtn = $('button');
+    innerBtns = $('#inner-circle .btn');
 
   buttons.on('click', function(){
     const btn = this.id
@@ -43,6 +44,7 @@ function startOver() {
   gamePattern = [];
   userClickedPattern = [];
   currentLevel = 0;
+  innerBtns.addClass('hidden')
   nextElement();
   display.text(score);
 }
