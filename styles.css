@@ -5,99 +5,95 @@
 }
 
 body {
-  background-color: #1f466f;
+  background: #1f466f;
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  justify-content: stretch;
+  align-items: stretch;
+  font-family: 'Press Start 2P', cursive;
   text-align: center;
+} 
+
+.layout {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+.main-center {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 0;
+  width: 100vw;
+  max-width: 100vw;
+  overflow: hidden;
 }
 
 #level-title {
   color: #FEF2BF;
   font-family: 'Press Start 2P', cursive;
-  font-size: 3rem;
-  margin-top:  5%;
+  font-size: 2.5rem;
+  margin-top: 32px;
   margin-bottom: 0;
+  word-break: break-word;
+  letter-spacing: 1px;
 }
+
 
 #outer-circle {
   border-radius: 50%;
   border-style: solid;
   border-width: 10px;
-  height: 500px;
-  margin: auto;
-  margin-top: 60px;
+  width: 420px;
+  height: 420px;
+  max-width: 90vw;
+  max-height: 90vw;
+  min-width: 220px;
+  min-height: 220px;
+  margin: 0 auto;
   position: relative;
-  width: 500px;
+  background: #21243a;
+  box-shadow: 0 0 30px #0008;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
 }
 
+#green, #red, #yellow, #blue {
+  position: absolute;
+  width: 50%;
+  height: 50%;
+  box-sizing: border-box;
+  border-style: solid;
+  border-width: 5px;
+}
 #green {
-  background: darkgreen;
-  border-radius: 250px 0 0 0;
-  box-sizing: border-box;
-  border-style: solid;
-  border-width: 5px;
-  height: 250px;
-  left: 50%;
-  margin: -250px 0px 0px -250px;
-  position: absolute;
-  top: 50%;
-  width: 250px;
-  -moz-border-radius: 250px 0 0 0;
-  -moz-box-sizing: border-box;
-  -webkit-border-radius: 250px 0 0 0;
-  -webkit-box-sizing: border-box;
+  background: linear-gradient(135deg, #2ecc40 70%, #145a10 100%);
+  border-radius: 100% 0 0 0;
+  top: 0; left: 0;
 }
-
 #red {
-  background: darkred;
-  border-radius: 0 250px 0 0;
-  border-style: solid;
-  border-width: 5px;
-  box-sizing: border-box;
-  height: 250px;
-  left: 50%;
-  margin: -250px 0px 0px 0px;
-  position: absolute;
-  top: 50%;
-  width: 250px;
-  -moz-border-radius: 0 250px 0 0;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  -webkit-border-radius: 0 250px 0 0;
+  background: linear-gradient(225deg, #ff4136 70%, #7f1d1d 100%);
+  border-radius: 0 100% 0 0;
+  top: 0; right: 0;
 }
-
 #yellow {
-  position: absolute;
-  height: 250px;
-  width: 250px;
-  border-radius: 0 0 0 250px;
-  -moz-border-radius: 0 0 0 250px;
-  -webkit-border-radius: 0 0 0 250px;
-  background: goldenrod;
-  top: 50%;
-  left: 50%;
-  margin: 0px -250px 0px -250px;
-  border-style: solid;
-  border-width: 5px;
-  box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
+  background: linear-gradient(45deg, #ffe066 70%, #bba600 100%);
+  border-radius: 0 0 0 100%;
+  bottom: 0; left: 0;
 }
-
 #blue {
-  position: absolute;
-  height: 250px;
-  width: 250px;
-  border-radius: 0 0 250px 0;
-  -moz-border-radius: 0 0 250px 0;
-  -webkit-border-radius: 0 0 250px 0;
-  background: darkblue;
-  top: 50%;
-  left: 50%;
-  margin: 0px 0px -250px 0px;
-  border-style: solid;
-  border-width: 5px;
-  box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
+  background: linear-gradient(315deg, #0074d9 70%, #001f3f 100%);
+  border-radius: 0 0 100% 0;
+  bottom: 0; right: 0;
 }
 
 #inner-circle {
@@ -145,9 +141,13 @@ body {
 }
 
 .container {
-  display: block;
-  margin: auto;
-  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 500px;
+  height: 100%;
+  flex: 1 0 auto;
 }
 
 .btn {
@@ -176,14 +176,15 @@ body {
 }
 
 .score {
-  margin-top: 10px;
-  font-size: 2rem;
-  color: white;
-  margin-bottom: 0;
-  padding-bottom: 0;
+  margin: 24px 0 12px 0;
+  font-size: 1.4rem;
+  color: #FEF2BF;
   display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   text-align: center;
-  justify-content: center
+  font-family: inherit;
 }
 
 #num {
@@ -266,3 +267,113 @@ a{
 }
 
 /* footer section end */
+
+/* --- RESPONSIVE DESIGN --- */
+@media (max-width: 600px) {
+  #outer-circle {
+    width: 90vw;
+    height: 90vw;
+    max-width: 350px;
+    max-height: 350px;
+    min-width: 220px;
+    min-height: 220px;
+  }
+  #green, #red, #yellow, #blue {
+    width: 45vw;
+    height: 45vw;
+    max-width: 175px;
+    max-height: 175px;
+    min-width: 110px;
+    min-height: 110px;
+    margin: 0;
+  }
+  #green {
+    margin: -45vw 0 0 -45vw;
+    max-width: 175px;
+    max-height: 175px;
+    min-width: 110px;
+    min-height: 110px;
+  }
+  #red {
+    margin: -45vw 0 0 0;
+  }
+  #yellow {
+    margin: 0 -45vw 0 -45vw;
+  }
+  #blue {
+    margin: 0 0 -45vw 0;
+  }
+  #inner-circle {
+    width: 45vw;
+    height: 45vw;
+    max-width: 175px;
+    max-height: 175px;
+    min-width: 110px;
+    min-height: 110px;
+    margin: -22.5vw 0 0 -22.5vw;
+  }
+  .container {
+    width: 100vw;
+    max-width: 100vw;
+    padding: 0 2vw;
+  }
+  #level-title {
+    font-size: 1.5rem;
+    margin-top: 15px;
+  }
+  .score {
+    font-size: 1.2rem;
+  }
+  #num {
+    font-size: 2rem;
+    padding-left: 5px;
+  }
+  .mobile-btn {
+    display: block !important;
+    width: 80vw;
+    max-width: 320px;
+    margin: 20px auto 0 auto;
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 400px) {
+  #outer-circle {
+    max-width: 220px;
+    max-height: 220px;
+    min-width: 140px;
+    min-height: 140px;
+  }
+  #green, #red, #yellow, #blue {
+    max-width: 110px;
+    max-height: 110px;
+    min-width: 60px;
+    min-height: 60px;
+  }
+  #inner-circle {
+    max-width: 110px;
+    max-height: 110px;
+    min-width: 60px;
+    min-height: 60px;
+  }
+  .mobile-btn {
+    font-size: 1rem;
+    padding: 2px 10px;
+  }
+}
+
+@media (max-width: 600px) {
+  /* Mostrar el botón de inicio móvil solo en pantallas pequeñas */
+  .mobile-btn {
+    display: block !important;
+  }
+}
+
+@media (min-width: 601px) {
+  /* Ocultar el botón de inicio móvil en desktop */
+  .mobile-btn {
+    display: none !important;
+  }
+}
+
+/* --- END RESPONSIVE DESIGN --- */

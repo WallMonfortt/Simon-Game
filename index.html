@@ -9,40 +9,40 @@
 </head>
 
 <body>
-  <h1 id="level-title">Press A Key to Start</h1>
-  <div class="score">
-    <h2>Score: </h2>
-    <h2 id="num"></h2>
-  </div>
-  <div class="container">
-    <div id="outer-circle">
-      <div type="button" id="green" class="btn"></div>
-      <div type="button" id="red" class="btn"></div>
-      <div type="button" id="yellow" class="btn"></div>
-      <div type="button" id="blue" class="btn"></div>
-      <div id="inner-circle" >
-          <div id="sea-blue" class="hidden btn"></div>
-          <div id="black" class="hidden btn"></div>
-          <div id="brown" class="hidden btn"></div>
-          <div id="gray" class="hidden btn"></div>
+  <div class="layout">
+    <h1 id="level-title">Press A Key to Start</h1>
+    <div class="main-center">
+      <div class="score">
+        <h2>Score: </h2>
+        <h2 id="num"></h2>
       </div>
+      <div class="container">
+        <div id="outer-circle">
+          <div type="button" id="green" class="btn"></div>
+          <div type="button" id="red" class="btn"></div>
+          <div type="button" id="yellow" class="btn"></div>
+          <div type="button" id="blue" class="btn"></div>
+          <div id="inner-circle" >
+              <div id="sea-blue" class="hidden btn"></div>
+              <div id="black" class="hidden btn"></div>
+              <div id="brown" class="hidden btn"></div>
+              <div id="gray" class="hidden btn"></div>
+          </div>
+        </div>
+      </div>
+      <button class="mobile-btn hidden" onclick="startOver()">Start Game</button>
     </div>
-
-  </div>
-
-  <button class="mobile-btn hidden" onclick="startOver()">Start Game</button>
-		<!-- footer copy right section start -->
-		<section id="copy-right">
-      
-			<div class="copy-right-sec">
+    <!-- footer copy right section start -->
+    <section id="copy-right">
+      <div class="copy-right-sec">
         <img src="./WM2.PNG" alt="logo" class="logo" />
         <p>
-          © Simon Game Powerd By <a href="#">Wal Monfortt</a> 
+          &copy; Simon Game Powerd By <a href="#">Wal Monfortt</a> 
         </p>
-			</div>
-
-		</section>
-		<!-- footer copy right section end -->
+      </div>
+    </section>
+    <!-- footer copy right section end -->
+  </div>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   <script src="./index.js"></script>
