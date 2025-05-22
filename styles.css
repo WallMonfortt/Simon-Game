@@ -51,12 +51,10 @@ body {
   border-radius: 50%;
   border-style: solid;
   border-width: 10px;
-  width: 420px;
-  height: 420px;
-  max-width: 90vw;
-  max-height: 90vw;
-  min-width: 220px;
-  min-height: 220px;
+  width: 500px;
+  height: 500px;
+  max-width: 95vw;
+  max-height: 95vw;
   margin: 0 auto;
   position: relative;
   background: #21243a;
@@ -106,7 +104,7 @@ body {
   height: 250px;
   width: 250px;
   border-style: solid;
-  /* border-width: 10px; */
+  border-width: 10px;
   top: 50%;
   left: 50%;
   margin: -125px 0px 0px -125px;
