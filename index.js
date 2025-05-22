@@ -6,7 +6,7 @@ let score = 0,
     userClickedPattern = [],
     currentLevel = 0,
     buttons = $('.btn');
-    startBtn = $('button');
+    startBtn = $('.mobile-btn');
     innerBtns = $('#inner-circle .btn');
 
   buttons.on('click', function(){
@@ -23,6 +23,12 @@ let score = 0,
 $(document).keydown(function (e) {
     startOver();
 })
+
+$(function() {
+  if (isMobile()) {
+    $('.mobile-btn').removeClass('hidden');
+  }
+});
 
 display.text(score);
 
