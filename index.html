@@ -10,7 +10,7 @@
 
 <body>
   <div class="layout">
-    <h1 id="level-title">Press A Key to Start</h1>
+    <h1 id="level-title">Press ▶ or Any Key to Start</h1>
     <div class="main-center">
       <div class="score">
         <h2>Score: </h2>
@@ -30,8 +30,12 @@
           </div>
         </div>
       </div>
-      <button class="mobile-btn hidden" onclick="startOver()">Start Game</button>
     </div>
+    
+    <!-- Botón móvil flotante -->
+    <button class="mobile-btn hidden" id="mobileStartBtn" onclick="startOver()" aria-label="Iniciar Juego">
+      <span class="btn-text">▶</span>
+    </button>
     <!-- footer copy right section start -->
     <section id="copy-right">
       <div class="copy-right-sec">

@@ -42,8 +42,16 @@ if (isMobile()) {
 }
 
 function startOver() {
-  startBtn.text('Restart')
-  body.removeClass('game-over')
+  const btn = $('#mobileStartBtn');
+  btn.addClass('rotating');
+  $('.btn-text').text('↻');
+  
+
+  setTimeout(() => {
+    btn.removeClass('rotating');
+  }, 1000);
+  
+  body.removeClass('game-over');
   buttons.removeClass("dis");
   score = 0;
   gamePattern = [];
